@@ -131,6 +131,8 @@ public class ObjectFinder : EditorWindow{
 
 						this.objTree = null;
 						this.objTree = new ObjectTree( ( GameObject )this.objList[ i ] );
+						Object[] obj = { ( Object )this.objList[ i ] };
+						Selection.objects = obj;
 					}
 				}
 
@@ -168,14 +170,16 @@ public class ObjectFinder : EditorWindow{
 
 						this.objTreeSetting.Style.normal.textColor = this.objTree.getTextColor( i );
 						if ( GUILayout.Button( this.objTree.getElemText( i ), this.objTreeSetting.Style ) ){
-
+							Object[] obj = { ( Object )this.objTree.Tree[ i ].Obj };
+							Selection.objects = obj;
 						}
 					}
 
 				}else{
 					this.objTreeSetting.Style.normal.textColor = this.objTree.getTextColor( 0 );
 					if ( GUILayout.Button( this.objTree.getElemText( 0 ), this.objTreeSetting.Style ) ){
-
+						Object[] obj = { ( Object )this.objTree.Root.Obj };
+						Selection.objects = obj;
 					}
 				}
 			}
