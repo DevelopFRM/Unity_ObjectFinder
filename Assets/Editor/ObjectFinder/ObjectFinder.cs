@@ -240,6 +240,10 @@ public class ObjectFinder : EditorWindow{
 	// 検索範囲及びテキストで抽出.
 	private Object samplingSearchScope( Object obj ){
 
+		// 検索しているものがコンポーネント名からならばそのまま返す.
+		if ( this.searchType == SearchType.Component )
+			return obj;
+
 		// テキストが適合しない場合はここでnullを返す.
 		if ( this.wholeWord ){
 			if ( !obj.name.Equals( this.searchText ) )
